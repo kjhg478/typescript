@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+## Typescript with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### React.FC를 이용해 얻을 수 있는 장점 2가지
 
-## Available Scripts
+- children 이라는 props가 기본적으로 탑재되어 있음
+  (children이 react.node로 되어 있어서 별도로 값을 안 넣어줘도 됨
+- 자동 완성의 기능
 
-In the project directory, you can run:
+### React.FC 의 단점
 
-### `yarn start`
+- defaultProps가 제대로 작동하지 않음
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Readonly 속성
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 읽기 전용 프로퍼티로 객체 생성 시 할당된 프로퍼티의 값을 바꿀 수 없다.
+- ex) readonly studentID: number;
 
-### `yarn test`
+## 인터페이스, 타입
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 메소드 : 객체내에서 선언된 함수
 
-### `yarn build`
+### 인터페이스 (기본값 - void), 타입 (재사용 가능)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 클래스 또는 객체를 위한 타입을 지정할 때 사용하는 문법
+- 행위를 작성하지 않고 인터페이스가 가져야 할 속성만 기술할 수 있음
+- 인터페이스를 타입으로 가지는 값은 인터페이스의 구조를 그 값으로 가지도록 강제 된다.
+- 인터페이스 내에서 메소드도 사용 가능하다.
+- 작성 중인 코드에 대한 더 많은 정보를 타입스크립트에게 제공
+- 객체에 대한 타입을 설정할 때 인터페이스를 쓰면 인터페이스를 쭉, 타입이면 타입 쭉 일관성을 유지해야 한다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 함수의 반환 (Return) 타입
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 반환 값이 없을 경우 void
+- ex) function 함수이름 (매개변수1, 매개변수2) : 타입 명시 { }
 
-### `yarn eject`
+### 함수의 매개변수 (Parameter)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- parameter에 타입 명시
+- 타입스크립트는 함수에 정의된 모든 매개 변수가 함수에 필요하다고 가정
+- 함수 호출 시 타입스크립트 컴파일러는 함수의 정의 된 매개 변수와 함수를 호출할 때 전달하는 아규먼트를 비교 검사한다. 이 때, 매개 변수와 아규먼트 수가 일치하지 않으면 오류 발생 !
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 선택적 매개변수 (Optional Parameter)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 매개 변수 이름 뒤에 물음표를 사용
+- ex) function 함수이름 (message? : string)
+- 전달되는 매개변수가 여러 개이고 몇 가지만 선택적 매개변수 인 경우, 필수 매개변수 뒤에 위치 시켜야 함
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 기본 매개변수 (Default Parameter)
 
-## Learn More
+- 아무런 값이 전달되지 않을 때, undefined 대신 할당 된 기본 값을 출력할 수 있다.
+- ex) function 함수이름 (message? : string = 'there')
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Arrow Function
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- function add (x, y) { return x + y; }
+- const add = (x, y) ⇒ x + y / const add = (x, y) ⇒ return ({ x + y })
