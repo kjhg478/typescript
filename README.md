@@ -9,6 +9,7 @@
 ### React.FC 의 단점
 
 - defaultProps가 제대로 작동하지 않음
+- 그래서 function을 많이 사용하기도 함 ( function 사용시 defaultprops의 대한 조건을 명시해줘야 함 )
 
 ### Readonly 속성
 
